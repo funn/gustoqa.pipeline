@@ -12,4 +12,7 @@ class GustoqaItem(Item):
     recipeInstructions = Field()
     image_urls = Field()
     images = Field()
+    description = Field()
     recipeCategory = Field()
+    datePublished = Field()
+    author = Field()
