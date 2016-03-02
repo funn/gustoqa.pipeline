@@ -2,6 +2,7 @@
 import os
 import hashlib
 import base64
+import uuid
 
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy import Request
@@ -18,7 +19,7 @@ class GustoqaImagesPipeline(ImagesPipeline):
         if not os.path.exists(basedir):
             os.makedirs(basedir)
         for image_url, index in item['image_urls'].iteritems():
-            yield Request(image_url, meta={'image_name': str(index).zfill(2)+'.jpg', 'basedir': base64.urlsafe_b64encode(hashlib.md5(item['url']).digest())})
+            yield Request(image_url, meta={'image_name': str(uuid.uuid4())+'.jpg', 'basedir': base64.urlsafe_b64encode(hashlib.md5(item['url']).digest())})
 
     def item_completed(self, results, item, info):
         image_paths = [x['path'] for ok, x in results if ok]
