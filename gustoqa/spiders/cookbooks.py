@@ -14,12 +14,12 @@ class CookbooksSpider(Spider):
     root_url = 'http://www.101cookbooks.com'
 
     def parse(self, response):
-        recipes = response.xpath('//a[@class="list-group-item"]/@href').extract()
-        for recipe in recipes:
-            yield Request(recipe, self.parse_recipe)
+        for recipe in response.xpath('//a[@class="list-group-item"]'):
+            yield Request(recipe.xpath('@href').extract_first(), self.parse_recipe, meta={'category': recipe.xpath('../@id').extract_first()})
 
     def parse_recipe(self, response):
         item = GustoqaItem()
+        item['recipeCategory'] = response.meta['category']
         item['name'] = response.xpath('//div[@id="recipe"]/h1/text()').extract_first()
         if item['name'] is None:
             raise DropItem('Not a recipe.')
