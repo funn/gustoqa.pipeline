@@ -9,6 +9,7 @@ class GustoqaItem(Item):
     recipeYield = Field()
     prepTime = Field()
     cookTime = Field()
+    totalTime = Field()
     recipeInstructions = Field()
     image_urls = Field()
     images = Field()
