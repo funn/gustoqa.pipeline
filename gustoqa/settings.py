@@ -62,10 +62,21 @@ DOWNLOAD_DELAY=1
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'gustoqa.pipelines.GustoqaImagesPipeline': 2,
+    'gustoqa.pipelines.MessageQueuePipeline': 1,
+    #'gustoqa.pipelines.GustoqaImagesPipeline': 2,
 }
 
 IMAGES_STORE = '/home/funn/stock'
+
+BROKER_HOST = 'localhost'
+
+BROKER_PORT = 5672
+
+BROKER_USERID = 'guest'
+
+BROKER_PASSWORD = 'guest'
+
+BROKER_VIRTUAL_HOST = '/'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
