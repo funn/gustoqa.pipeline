@@ -63,7 +63,7 @@ DOWNLOAD_DELAY=1
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     'gustoqa.pipelines.MessageQueuePipeline': 1,
-    #'gustoqa.pipelines.GustoqaImagesPipeline': 2,
+    'gustoqa.pipelines.GustoqaImagesPipeline': 2,
 }
 
 IMAGES_STORE = '/home/funn/stock'
