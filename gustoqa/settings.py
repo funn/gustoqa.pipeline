@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 
 # Scrapy settings for gustoqa project
 #
@@ -66,11 +67,11 @@ ITEM_PIPELINES = {
     'gustoqa.pipelines.GustoqaImagesPipeline': 2,
 }
 
-IMAGES_STORE = '/home/funn/stock'
+IMAGES_STORE = '/stock'
 
-BROKER_HOST = 'localhost'
+BROKER_HOST = os.getenv('AMQ_PORT_5672_TCP_ADDR')
 
-BROKER_PORT = 5672
+BROKER_PORT = os.getenv('AMQ_PORT_5672_TCP_PORT')
 
 BROKER_USERID = 'guest'
 

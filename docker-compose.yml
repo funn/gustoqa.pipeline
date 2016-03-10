@@ -1,0 +1,18 @@
+version: '2'
+services:
+  web:
+    build: .
+    ports:
+      - "6800:6800"
+    volumes:
+      - .:/code
+    depends_on:
+      - rabbitmq
+    links:
+      - rabbitmq:amq
+  rabbitmq:
+    image: rabbitmq:3-management
+    expose:
+      - "5672"
+    ports:
+      - "15672:15672"
