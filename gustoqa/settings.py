@@ -69,9 +69,9 @@ ITEM_PIPELINES = {
 
 IMAGES_STORE = '/stock'
 
-BROKER_HOST = os.getenv('AMQ_PORT_5672_TCP_ADDR')
+BROKER_HOST = 'rabbitmq'
 
-BROKER_PORT = os.getenv('AMQ_PORT_5672_TCP_PORT')
+BROKER_PORT = 5672
 
 BROKER_USERID = 'guest'
 
